@@ -346,6 +346,12 @@ class Connection(_mysql.connection):
             else:
                 return 0
 
+    def commit(self):
+        self.query("COMMIT")
+
+    def rollback(self):
+        self.query("ROLLBACK")
+
     def set_character_set(self, charset):
         """Set the connection character set to charset. The character
         set can only be changed in MySQL-4.1 and newer. If you try
