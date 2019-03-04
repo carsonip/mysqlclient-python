@@ -273,9 +273,13 @@ class Connection(_mysql.connection):
         if isinstance(query, bytearray):
             query = bytes(query)
         if self.waiter is not None:
+            print('send query')
             self.send_query(query)
+            print('send query done')
             self.waiter(self.fileno())
+            print('wait done')
             self.read_query_result()
+            print('read query result done')
         else:
             _mysql.connection.query(self, query)
 
