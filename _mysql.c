@@ -1953,19 +1953,19 @@ _mysql_ConnectionObject_send_query(
 	char *query;
 	int len, r;
 	MYSQL *mysql = &(self->connection);
-	printf("mysql parse tuple");
+	printf("mysql parse tuple\n");
 	if (!PyArg_ParseTuple(args, "s#:query", &query, &len)) return NULL;
-    printf("mysql check conn");
+    printf("mysql check conn\n");
 	check_connection(self);
-    printf("mysql check conn done");
+    printf("mysql check conn done\n");
 	Py_BEGIN_ALLOW_THREADS
-	printf("mysql send query");
+	printf("mysql send query\n");
 	r = mysql_send_query(mysql, query, len);
-	printf("mysql send query done");
+	printf("mysql send query done\n");
 	Py_END_ALLOW_THREADS
-	printf("mysql end allow threads");
+	printf("mysql end allow threads\n");
 	if (r) return _mysql_Exception(self);
-	printf("return");
+	printf("return\n");
 	Py_INCREF(Py_None);
 	return Py_None;
 }
