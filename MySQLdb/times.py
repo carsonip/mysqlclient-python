@@ -59,17 +59,17 @@ def DateTime_or_None(s):
             micros = 0
         elif len(micros) < 7:
             # 12:00:00.123456
-            micros = int(micros) * 10 ** (6 - len(micros))
+            micros = int(micros, 10) * 10 ** (6 - len(micros))
         else:
             return None
 
         return datetime(
-            int(s[:4]),          # year
-            int(s[5:7]),         # month
-            int(s[8:10]),        # day
-            int(s[11:13] or 0),  # hour
-            int(s[14:16] or 0),  # minute
-            int(s[17:19] or 0),  # second
+            int(s[:4], 10),      # year
+            int(s[5:7], 10),     # month
+            int(s[8:10], 10),    # day
+            int(s[11:13], 10),   # hour
+            int(s[14:16], 10),   # minute
+            int(s[17:19], 10),   # second
             micros,              # microsecond
         )
     except ValueError:
@@ -115,9 +115,9 @@ def Time_or_None(s):
 def Date_or_None(s):
     try:
         return date(
-            int(s[:4]),    # year
-            int(s[5:7]),   # month
-            int(s[8:10]),  # day
+            int(s[:4], 10),    # year
+            int(s[5:7], 10),   # month
+            int(s[8:10], 10),  # day
         )
     except ValueError:
         return None
