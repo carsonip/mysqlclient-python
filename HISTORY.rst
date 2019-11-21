@@ -81,7 +81,6 @@ Release: 2019-01-18
 * Remove context manager API from Connection.  It was for transaction.
   New context manager API for closing connection will be added in future version.
 
-* Remove ``waiter`` option from Connection.
 
 * Remove ``escape_sequence``, and ``escape_dict`` methods from Connection class.
 
