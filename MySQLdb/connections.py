@@ -5,8 +5,9 @@ want to make your own subclasses. In most cases, you will probably
 override Connection.default_cursor with a non-standard Cursor class.
 """
 import re
-import sys
-
+from weakref import proxy
+from MySQLdb.constants import CLIENT, FIELD_TYPE
+from MySQLdb.converters import conversions, _bytes_or_str
 from MySQLdb import cursors, _mysql
 from MySQLdb.compat import unicode, PY2
 from MySQLdb._exceptions import (
@@ -129,9 +130,6 @@ class Connection(_mysql.connection):
         There are a number of undocumented, non-standard methods. See the
         documentation for the MySQL C API for some hints on what they do.
         """
-        from MySQLdb.constants import CLIENT, FIELD_TYPE
-        from MySQLdb.converters import conversions, _bytes_or_str
-        from weakref import proxy
 
         kwargs2 = kwargs.copy()
 
