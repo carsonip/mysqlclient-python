@@ -67,9 +67,9 @@ def DateTime_or_None(s):
             int(s[:4], 10),      # year
             int(s[5:7], 10),     # month
             int(s[8:10], 10),    # day
-            int(s[11:13], 10),   # hour
-            int(s[14:16], 10),   # minute
-            int(s[17:19], 10),   # second
+            int(s[11:13] or '0', 10),   # hour
+            int(s[14:16] or '0', 10),   # minute
+            int(s[17:19] or '0', 10),   # second
             micros,              # microsecond
         )
     except ValueError:
